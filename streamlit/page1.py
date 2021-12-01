@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
 import pickle
-
-from traitlets.traitlets import default
 from heatmap import heatmap
 
 st.markdown('<style>h3{color: #000}</style>', unsafe_allow_html=True)
