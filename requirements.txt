@@ -5,3 +5,4 @@ umap-learn
 seaborn
 matplotlib
 plotly-express
+gensim
