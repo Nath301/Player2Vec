@@ -12,7 +12,7 @@ st.markdown('<style>.css-1hox65q{color: #FFFFFF}</style>',
 
 
 def get_pic(player_name):
-    temporary_df = pd.read_csv('utils/csv/player_pic_club_and_flag.csv')
+    temporary_df = pd.read_csv('csv/player_pic_club_and_flag.csv')
     list_of_names = list(temporary_df["long_name"])
     if player_name in list_of_names:
         df_0 = temporary_df[temporary_df["long_name"] == player_name]
@@ -26,9 +26,9 @@ def get_pic(player_name):
         return url_pic
 
 def player():
-    data = pd.read_csv('utils/csv/player2vec_final_df.csv')
+    data = pd.read_csv('csv/player2vec_final_df.csv')
     df = data.copy()
-    data1 = pd.read_csv('utils/csv/player.csv')
+    data1 = pd.read_csv('csv/player.csv')
     df1 = data1.copy()
 
     st.sidebar.write('### Check the similarities with this player')
@@ -47,7 +47,7 @@ def player():
     st.write(id)
     st.sidebar.write('Select a number of player')
     num_of_similar = st.sidebar.slider(' ', 3, 10)
-    file = open('utils/pickle/doc2vec.pickle', 'rb')
+    file = open('pickle/doc2vec.pickle', 'rb')
     loaded_model = pickle.load(file)
     result = loaded_model.dv.most_similar(loaded_model[id],
                                         topn=100)
