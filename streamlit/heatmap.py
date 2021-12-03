@@ -59,7 +59,7 @@ def get_figure(heatmap, type_name, player_name):
              sizey=1.327,
              sizing="fill",
              layer='above',
-             opacity=0.65))
+             opacity=0.85))
 
     return fig
 
