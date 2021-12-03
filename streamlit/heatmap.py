@@ -50,7 +50,7 @@ def get_figure(heatmap, type_name, player_name):
 
     fig.update_layout(paper_bgcolor='rgba(0,0,0,0)')
 
-    bg = Image.open("../png/pitch.png")
+    bg = Image.open("png/pitch.png")
     fig.add_layout_image(
         dict(source=bg,
              x=-0.155,
@@ -66,7 +66,7 @@ def get_figure(heatmap, type_name, player_name):
 
 def heatmap(type_name, player_name):
     heatmap = pd.read_csv(
-        "../csv/type_location_for_male_player.csv"
+        "csv/type_location_for_male_player.csv"
     )
     heatmap.drop(columns="Unnamed: 0", inplace=True)
     figure = get_figure(heatmap, type_name, player_name)

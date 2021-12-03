@@ -10,7 +10,7 @@ st.markdown('<style>.css-1hox65q{color: #FFFFFF}</style>',
 
 
 def get_pic(player_name):
-    temporary_df = pd.read_csv('../csv/player_pic_club_and_flag.csv'
+    temporary_df = pd.read_csv('csv/player_pic_club_and_flag.csv'
     )
     list_of_names = list(temporary_df["long_name"])
     if player_name in list_of_names:
@@ -26,9 +26,9 @@ def get_pic(player_name):
 
 
 def player():
-    data = pd.read_csv('../csv/player2vec_final_df.csv')
+    data = pd.read_csv('csv/player2vec_final_df.csv')
     df = data.copy()
-    data1 = pd.read_csv('../csv/player.csv')
+    data1 = pd.read_csv('csv/player.csv')
     df1 = data1.copy()
 
     st.sidebar.write('### Check the stats and similar players of this player')
