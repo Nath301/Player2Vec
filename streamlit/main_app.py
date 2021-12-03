@@ -13,8 +13,22 @@ c.write('''
 #### Football speaks its own language. We translate it for you to find player similarities.
 ''')
 
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.unsplash.com/photo-1589487391730-58f20eb2c308?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80.png);
+background-size: cover;
+}
+</style>
+'''
 
-PAGES = {"Data Visualisation": page2, "Project Tensorflow":page3, "Player2Vec": page1}
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+PAGES = {
+    "Data Visualisation": page2,
+    "Project Tensorflow": page3,
+    "Player2Vec": page1
+}
 st.sidebar.write('### Navigation')
 
 selection = st.sidebar.radio("Go to", list(PAGES.keys()))

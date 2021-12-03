@@ -10,7 +10,8 @@ st.markdown('<style>.css-1hox65q{color: #FFFFFF}</style>',
 
 
 def get_pic(player_name):
-    temporary_df = pd.read_csv('csv/player_pic_club_and_flag.csv')
+    temporary_df = pd.read_csv('../csv/player_pic_club_and_flag.csv'
+    )
     list_of_names = list(temporary_df["long_name"])
     if player_name in list_of_names:
         df_0 = temporary_df[temporary_df["long_name"] == player_name]
@@ -23,32 +24,31 @@ def get_pic(player_name):
         url_pic = 'https://cdn.sofifa.net/players/notfound_0_120.png'
         return url_pic
 
+
 def player():
-    data = pd.read_csv('csv/player2vec_final_df.csv')
+    data = pd.read_csv('../csv/player2vec_final_df.csv')
     df = data.copy()
-    data1 = pd.read_csv('csv/player.csv')
+    data1 = pd.read_csv('../csv/player.csv')
     df1 = data1.copy()
 
-    st.sidebar.write('### Check the similarities with this player')
+    st.sidebar.write('### Check the stats and similar players of this player')
 
     player = st.sidebar.selectbox('Select a player',
                                   df1['player_name'].sort_values())
     #index=df['player_name'].iloc[3271]
     number_of_player = len(df1['player_name'])
-    st.sidebar.write(f'There is {number_of_player} available.')
+    st.sidebar.write(f'There are {number_of_player} players available.')
 
     id = []
     for n in range(len(df['player_name'])):
         if player in df['player_name'].iloc[n]:
             id = df['Unnamed: 0'].iloc[n]
-    st.sidebar.write('### Check the similarities with this player')
-    st.write(id)
+    st.sidebar.write('### Check the number of similar players of this player')
     st.sidebar.write('Select a number of player')
     num_of_similar = st.sidebar.slider(' ', 3, 10)
-    file = open('pickle/doc2vec.pickle', 'rb')
+    file = open('../pickle/doc2vec.pickle', 'rb')
     loaded_model = pickle.load(file)
-    result = loaded_model.dv.most_similar(loaded_model[id],
-                                        topn=100)
+    result = loaded_model.dv.most_similar(loaded_model[id], topn=100)
     lst = [x for x in df1['player_name']]
 
     dict_similar = []
@@ -84,18 +84,19 @@ def player():
             st.image(player_photo)
 
     st.write(f'''
-    ### Here are the {num_of_similar} players the most similar to {player}
+    ### Here are the {num_of_similar} players that are the most similar to {player}
     ''')
     c1 = st.container()
     i = 0
     for pl in dict_similar:
         if i < num_of_similar:
-            c1.write(pl)
-        i+=1
-    st.write("### This is  a test for a heatmap for a player: ")
+            c1.write(f"{i+1}. {pl}")
+        i += 1
+    st.write(f"### {player}'s heatmap over recorded seasons")
 
-    type_name = st.selectbox('Please Choose one of the three possible actions?',
-                            ('Pass', 'Dribble', 'Shot'))
+    type_name = st.selectbox(
+        'Please Choose one of the three possible actions?',
+        ('Pass', 'Dribble', 'Shot'))
 
     figure = heatmap(type_name, player)
 

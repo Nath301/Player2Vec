@@ -7,19 +7,17 @@ import plotly.express as px
 import pandas as pd
 
 
-
-def get_player(heatmap,name):
+def get_player(heatmap, name):
     player_heatmap = heatmap[heatmap["player_name"] == name]
     try:
-        player_heatmap = player_heatmap.replace("2018","2018/2019")
+        player_heatmap = player_heatmap.replace("2018", "2018/2019")
     except:
         pass
     try:
-        player_heatmap = player_heatmap.replace("2007","2007/2008")
+        player_heatmap = player_heatmap.replace("2007", "2007/2008")
     except:
         pass
     return player_heatmap
-
 
 
 def get_seasons_for_df(player_heatmap):
@@ -27,9 +25,8 @@ def get_seasons_for_df(player_heatmap):
     for element in player_heatmap.seasons:
         ordered_list.append(int(element[:4]))
 
-
     player_heatmap["ordered_season"] = ordered_list
-    player_heatmap = player_heatmap.sort_values(by = "ordered_season")
+    player_heatmap = player_heatmap.sort_values(by="ordered_season")
     return player_heatmap
 
 
@@ -46,31 +43,38 @@ def get_figure(heatmap, type_name, player_name):
                              range_y=(86, -7),
                              animation_frame="seasons",
                              animation_group="type_name",
-                             color_continuous_scale = "reds",
-                             title=f"Heatmap of {player_name} over seasons",
+                             color_continuous_scale="reds",
+                             title=f"Heatmap",
                              width=800,
                              height=650)
 
-
     fig.update_layout(paper_bgcolor='rgba(0,0,0,0)')
 
-    bg = Image.open("png/pitch.png")
-    fig.add_layout_image(dict(source=bg, x=-0.155, y=1.1545, sizex=1.153, sizey=1.327, sizing="fill", layer='above', opacity=0.65))
+    bg = Image.open("../png/pitch.png")
+    fig.add_layout_image(
+        dict(source=bg,
+             x=-0.155,
+             y=1.1545,
+             sizex=1.153,
+             sizey=1.327,
+             sizing="fill",
+             layer='above',
+             opacity=0.65))
 
     return fig
 
 
-
-def heatmap(type_name,player_name):
-    heatmap = pd.read_csv("csv/type_location_for_male_player.csv")
-    heatmap.drop(columns = "Unnamed: 0", inplace =True)
-    figure = get_figure(heatmap,type_name,player_name)
+def heatmap(type_name, player_name):
+    heatmap = pd.read_csv(
+        "../csv/type_location_for_male_player.csv"
+    )
+    heatmap.drop(columns="Unnamed: 0", inplace=True)
+    figure = get_figure(heatmap, type_name, player_name)
     return figure
-
 
 
 if __name__ == "__main__":
     type_name = input("Choose between: Pass//Shot//Dribble: ")
     player_name = input("Choose a player: ")
-    figure_  = heatmap(type_name,player_name)
+    figure_ = heatmap(type_name, player_name)
     figure_.show()
