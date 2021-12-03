@@ -3,6 +3,7 @@ import page1, page2, page3
 
 st.markdown('<style>h1{color: #4056A1}</style>', unsafe_allow_html=True)
 st.markdown('<style>.css-12oz5g7{padding: 0}</style>', unsafe_allow_html=True)
+st.set_page_config(layout="wide")
 
 c = st.container()
 c.write('''
