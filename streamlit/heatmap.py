@@ -43,7 +43,7 @@ def get_figure(heatmap, type_name, player_name):
                              range_y=(86, -7),
                              animation_frame="seasons",
                              animation_group="type_name",
-                             color_continuous_scale="grey",
+                             color_continuous_scale="reds",
                              title=f"Heatmap",
                              width=800,
                              height=650)
