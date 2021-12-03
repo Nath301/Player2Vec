@@ -46,7 +46,7 @@ def player():
     st.sidebar.write('### Check the number of similar players of this player')
     st.sidebar.write('Select a number of player')
     num_of_similar = st.sidebar.slider(' ', 3, 10)
-    file = open('../pickle/doc2vec.pickle', 'rb')
+    file = open('pickle/doc2vec.pickle', 'rb')
     loaded_model = pickle.load(file)
     result = loaded_model.dv.most_similar(loaded_model[id], topn=100)
     lst = [x for x in df1['player_name']]
