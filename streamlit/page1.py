@@ -75,7 +75,7 @@ def player():
             st.write('Team : ', team)
         st.write('Position : ', position)
         st.write('Foot : ', foot)
-        st.write('Number of goals : ', goals)
+        st.write('Goal per match : ', goals)
     with col1:
         if len(player_photo) == 4:
             st.image(player_photo[0])
