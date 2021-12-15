@@ -3,11 +3,11 @@ import umap.umap_ as umap
 import pickle
 
 st.markdown('<style>h5{color: #659DBD}</style>', unsafe_allow_html=True)
-
-st.write(
-    '''### On this page you can see the graphical representations provided by our most optimized model:
-    the players' posts are well recognized and the clusters are more accurate.'''
-)
+def info2():
+    st.write(
+        '''### On this page you can see the graphical representations provided by our most optimized model:
+        the players' posts are well recognized and the clusters are more accurate.'''
+    )
 
 
 def plot_player():
@@ -35,5 +35,6 @@ def plot_3d():
 
 
 def app():
+    info2()
     plot_player()
     plot_3d()
