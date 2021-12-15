@@ -10,7 +10,6 @@ c.write('''
 ''')
 c.write('''
 #### Using NLP to Profile Football Players
-#### Football speaks its own language. We translate it for you to find player similarities.
 ''')
 
 page_bg_img = '''
@@ -25,9 +24,9 @@ background-size: cover;
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 PAGES = {
+    "Player2Vec": page1,
     "Data Visualisation": page2,
-    "Project Tensorflow": page3,
-    "Player2Vec": page1
+    "Projector Tensorflow": page3
 }
 st.sidebar.write('### Navigation')
 

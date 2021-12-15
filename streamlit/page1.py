@@ -8,6 +8,9 @@ st.markdown('<style>h1{color: #4056A1}</style>', unsafe_allow_html=True)
 st.markdown('<style>.css-1hox65q{color: #FFFFFF}</style>',
             unsafe_allow_html=True)
 
+st.write('''### Here you can see all our players in our database.
+        There is information about each player and similar players.
+        Bonus: Our database allowed us to create a Heatmap according to 3 types of actions.''')
 
 def get_pic(player_name):
     temporary_df = pd.read_csv('csv/player_pic_club_and_flag.csv'
