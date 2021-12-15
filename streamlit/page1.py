@@ -9,7 +9,7 @@ st.markdown('<style>.css-1hox65q{color: #FFFFFF}</style>',
             unsafe_allow_html=True)
 
 st.write('''### Here you can see all our players in our database.
-        There is information about each player and similar players.
+        There is information about each player and the similar players provided by our model.
         Bonus: Our database allowed us to create a Heatmap according to 3 types of actions.''')
 
 def get_pic(player_name):
